@@ -5,8 +5,8 @@ export const education: EducationEntry[] = [
   {
     degree: 'Bacharelado em Engenharia de Software',
     status: 'Em andamento',
-    institution: '',
-    period: '',
+    institution: 'UNIFAN — Alfredo Nasser',
+    period: '7º período',
   },
 ];
 

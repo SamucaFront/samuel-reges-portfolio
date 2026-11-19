@@ -10,7 +10,7 @@ export const profile = {
   location: 'Brazil',
   available: true,
   /** E-mail de contato (ex.: "nome@dominio.com"). Usado nos links e no fallback mailto do formulário. */
-  email: '',
+  email: 'samucadev4@gmail.com',
   about: {
     title: 'ABOUT ME.',
     subtitle: 'Desenvolvimento Full Stack: web, mobile e back-end.',
@@ -47,7 +47,7 @@ export const profile = {
 };
 
 export const socialLinks: SocialLink[] = [
-  { id: 'linkedin', label: 'LinkedIn', value: '' }, // ex.: https://www.linkedin.com/in/seu-usuario
-  { id: 'github', label: 'GitHub', value: '' }, // ex.: https://github.com/seu-usuario
+  { id: 'linkedin', label: 'LinkedIn', value: 'https://www.linkedin.com/in/samuel-reges-204421381/' },
+  { id: 'github', label: 'GitHub', value: 'https://github.com/SamucaFront' },
   { id: 'email', label: 'E-mail', value: profile.email },
 ];

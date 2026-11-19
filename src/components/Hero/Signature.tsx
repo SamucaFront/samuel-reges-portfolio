@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 /**
@@ -7,8 +7,9 @@ import { motion, useReducedMotion } from 'framer-motion';
  * uma máscara revela o traço da esquerda para a direita, e então o preenchimento
  * aparece. Um floreio final é desenhado com pathLength.
  */
-export function Signature({ delay = 0.9 }: { delay?: number }) {
+export function Signature({ delay = 0.9, text = 'Samuel Reges', fontSize = 240 }: { delay?: number; text?: string; fontSize?: number }) {
   const reduce = useReducedMotion();
+  const clipId = `sig-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   const [fontReady, setFontReady] = useState(false);
 
   useEffect(() => {
@@ -30,10 +31,10 @@ export function Signature({ delay = 0.9 }: { delay?: number }) {
       viewBox="0 0 1000 340"
       className="h-auto w-full overflow-visible"
       role="img"
-      aria-label="Assinatura: Samuel Reges"
+      aria-label={`Assinatura: ${text}`}
     >
       <defs>
-        <clipPath id="sig-reveal">
+        <clipPath id={clipId}>
           <motion.rect
             x="-20"
             y="-40"
@@ -45,13 +46,13 @@ export function Signature({ delay = 0.9 }: { delay?: number }) {
         </clipPath>
       </defs>
       {fontReady && (
-        <g clipPath="url(#sig-reveal)">
+        <g clipPath={`url(#${clipId})`}>
           <motion.text
             x="500"
             y="205"
             textAnchor="middle"
             className="font-script"
-            style={{ fontSize: 240 }}
+            style={{ fontSize }}
             fill="rgb(var(--accent))"
             stroke="rgb(var(--accent))"
             strokeWidth={1.4}
@@ -64,7 +65,7 @@ export function Signature({ delay = 0.9 }: { delay?: number }) {
               fillOpacity: reduce ? { duration: 0 } : { duration: 1.2, delay: delay + 1.4, ease: 'easeOut' },
             }}
           >
-            Samuel Reges
+            {text}
           </motion.text>
         </g>
       )}
